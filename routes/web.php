@@ -17,6 +17,10 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'Home1Controller@index');
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('product/view', 'ProductController@index')->name('fetchProduct');
+
+Route::get('product/create', 'ProductController@create')->name('productAdd');
