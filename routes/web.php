@@ -24,3 +24,5 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('product/view', 'ProductController@index')->name('fetchProduct');
 
 Route::get('product/create', 'ProductController@create')->name('productAdd');
+
+Route::post('product/store', 'ProductController@store')->name('productStore');
