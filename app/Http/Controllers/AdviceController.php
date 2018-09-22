@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Advice;
 use Illuminate\Http\Request;
 
-use App\Category;
-
-class HomeController extends Controller
+class AdviceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $categories = Category::all();
-
-        // return view('webcontents.index', compact('categories'));
-        return view('webcontents.index');
+        //
     }
 
     /**
@@ -45,10 +41,10 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Advice  $advice
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Advice $advice)
     {
         //
     }
@@ -56,10 +52,10 @@ class HomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Advice  $advice
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Advice $advice)
     {
         //
     }
@@ -68,10 +64,10 @@ class HomeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Advice  $advice
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Advice $advice)
     {
         //
     }
@@ -79,10 +75,10 @@ class HomeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Advice  $advice
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Advice $advice)
     {
         //
     }

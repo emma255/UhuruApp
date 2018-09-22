@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
-use App\Category;
-
 
 class ProductController extends Controller
 {
@@ -16,9 +14,9 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = Category::all();
+        $products = Product::where('category_id',$request->id)->get();
 
-        return view('webcontents.category-requested', compact('categories'));
+        return view('webcontents.category-requested', compact('products'));
     }
 
     /**
@@ -39,7 +37,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $product = new Product;
+
+        $product = Product::create([
+            'name' => $request->name,
+             'price'=> $request->price,
+             'location' => $request->location,
+             'contacts' => $request->contacts,
+             'quantity' => $request->quantity,
+             'picture' => $request->picture,
+             'extra_info' => $request->extra,
+             'date_from' => $request->from,
+             'date_to' => $request->to,
+             'category_id' => $request->category,
+        ]);
+
+        return redirect('/');
     }
 
     /**
