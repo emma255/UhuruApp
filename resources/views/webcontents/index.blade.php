@@ -1,4 +1,5 @@
 @include('layouts.head')
+
 <body>
 	<!-- header -->
 	<div class="agileits_header col-md-12">
@@ -23,8 +24,30 @@
 		</div>
 		<div class="pull-right">
 			<ul>
-				<li class="dropdown profile_details_drop">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i><span class="caret"></span></a>					{{-- <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('images/9.png')}}" alt="user" height="40px"></a>					--}}
+				<li class="dropdown">
+					@if (Auth::check()) {
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('images/9.png')}}" alt="user" height="40px"></a>
+
+					<div class="mega-dropdown-menu">
+						<div class="w3ls_vegetables">
+							<ul class="dropdown-menu drp-mnu">
+								<li>
+
+									<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+											document.getElementById('logout-form').submit();">
+							{{ __('Logout') }} as {{Auth::user()->name }}
+						</a>
+
+									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+										@csrf
+									</form>
+								</li>
+							</ul>
+						</div>
+					</div>
+					} @else{
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('images/default_image.png')}}" alt="user" height="40px"></a>
+
 					<div class="mega-dropdown-menu">
 						<div class="w3ls_vegetables">
 							<ul class="dropdown-menu drp-mnu">
@@ -32,7 +55,7 @@
 								<li><a href="{{route('register')}}">Sign Up</a></li>
 							</ul>
 						</div>
-					</div>
+					</div>} @endif
 				</li>
 			</ul>
 		</div>
@@ -117,10 +140,10 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 						<ul class="nav navbar-nav nav_1">
-							{{-- @foreach($categories as $category)
-						<li><a href="{{route('fetchProduct', ['id' => $category->id])}}">{{$category->categoryname}}</a></li>
-							@endforeach --}}
-							{{-- <li class="dropdown">
+							@foreach($categories = App\Category::all() as $category)
+							<li><a href="{{route('fetchProduct', ['id' => $category->id])}}">{{$category->categoryname}}</a></li>
+							@endforeach {{--
+							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Frozen Foods<span class="caret"></span></a>
 								<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
 									<div class="w3ls_vegetables">
@@ -139,8 +162,7 @@
 
 			<div class="col-md-6 bg-info">
 
-				@yield('contents')
-				{{-- contents goes here --}}
+				@yield('contents') {{-- contents goes here --}}
 
 			</div>
 
@@ -178,7 +200,6 @@
 	</div>
 
 	{{-- foot goes here --}}
-
 	@include('layouts.foot')
 </body>
 
