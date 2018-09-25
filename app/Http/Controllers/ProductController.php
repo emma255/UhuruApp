@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,20 @@ class ProductController extends Controller
     {
         $products = Product::where('category_id',$request->id)->get();
 
-        return view('webcontents.category-requested', compact('products'));
+        return view('webcontents.products-list', compact('products'));
+    }
+    /**
+     * Display a listing of the resource to the admin.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexAdmin(Request $request)
+    {
+        $products = Product::all();
+
+        //join with the category table
+
+        return view('webcontents.admin-products-list', compact('products'));
     }
 
     /**
@@ -38,6 +52,18 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         // $product = new Product;
+        $this->validate($request, [
+            'name' => 'required',
+             'price'=> 'required',
+             'location' => 'required',
+             'contacts' => 'required',
+             'quantity' => 'required',
+             'picture' => 'required',
+             'extra_info' => 'required',
+             'date_from' => 'required',
+             'date_to' => 'required',
+             'category_id' => 'required',
+        ]);
 
         $product = Product::create([
             'name' => $request->name,
@@ -50,6 +76,7 @@ class ProductController extends Controller
              'date_from' => $request->from,
              'date_to' => $request->to,
              'category_id' => $request->category,
+            //  'user_id' => Auth::user('id'),
         ]);
 
         return redirect('/');
@@ -61,9 +88,11 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Request $request)
     {
-        //
+        $product = Product::find($request->id);
+
+        return view('webcontents.product-show', compact('product'));
     }
 
     /**
@@ -72,9 +101,11 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Request $request)
     {
-        //
+        $product = Product::find($request->id);
+
+        return view('webcontents.product-edit', compact('product'));
     }
 
     /**
@@ -84,9 +115,25 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request)
     {
-        //
+        $product = Product::find($request->id);
+
+        $product->name = $request->name;
+        $product->price= $request->price;
+        $product->location = $request->location;
+        $product->contacts = $request->contacts;
+        $product->quantity = $request->quantity;
+        $product->picture = $request->picture;
+        $product->extra_info = $request->extra;
+        $product->date_from = $request->from;
+        $product->date_to = $request->to;
+        $product->category_id = $request->category;
+
+
+        $product->save();
+
+        return redirect('/');
     }
 
     /**
@@ -95,8 +142,10 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request)
     {
-        //
+        Product::where('id',$request->id)->delete();
+
+        return redirect()->route('fetchProductAdmin');
     }
 }
