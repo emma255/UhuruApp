@@ -14,7 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+
+        return view('webcontents.category-list', compact('categories'));
     }
 
     /**
@@ -24,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('webcontents.category-create');
     }
 
     /**
@@ -35,7 +37,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'categoryname'=>'required',
+            'description'=>'required',
+        ]);
+        $category = new Category;
+
+        $category->categoryname = $request->categoryname;
+        $category->description = $request->description;
+
+        $category->save();
+
+        return redirect()->route('listCategories');
     }
 
     /**
@@ -44,9 +57,11 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Request $request)
     {
-        //
+        $category = Category::find($request->id);
+
+        return view('webcontents.category-show', compact('category'));
     }
 
     /**
@@ -55,9 +70,11 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Request $request)
     {
-        //
+        $category = Category::find($request->id);
+
+        return view('webcontents.category-edit', compact('category'));
     }
 
     /**
@@ -67,9 +84,20 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request)
     {
-        //
+        $this->validate($request,[
+            'categoryname'=>'required',
+            'description'=>'required',
+        ]);
+        $category = Category::find($request->id);
+
+        $category->categoryname = $request->categoryname;
+        $category->description = $request->description;
+
+        $category->save();
+
+        return redirect()->route('listCategories');
     }
 
     /**
@@ -78,8 +106,10 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Request $request)
     {
-        //
+        $deleted = Category::where('id',$request->id)->delete();
+
+        return redirect()->route('listCategories');
     }
 }
