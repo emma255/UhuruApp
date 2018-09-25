@@ -160,7 +160,7 @@
 				</nav>
 			</div>
 
-			<div class="col-md-6 bg-info">
+			<div class="col-md-6 row bg-info">
 
 				@yield('contents') {{-- contents goes here --}}
 
