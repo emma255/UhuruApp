@@ -17,13 +17,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		function hideURLbar(){ window.scrollTo(0,1); }
 	</script>
 	<!-- //for-mobile-apps -->
-<link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
+<link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" media="all" />
 	<link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
 	<!-- font-awesome icons -->
 	<link href="{{asset('css/font-awesome.css')}}" rel="stylesheet" type="text/css" media="all" />
 	<!-- //font-awesome icons -->
 	<!-- js -->
-	<script src="{{asset('js/jquery-1.11.1.min.js')}}"></script>
+	<script src="{{asset('js/jquery.min.js')}}"></script>
 	<!-- //js -->
 	<link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet'
 	 type='text/css'>
