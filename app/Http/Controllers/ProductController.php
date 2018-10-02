@@ -51,19 +51,21 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // $product = new Product;
+
         $this->validate($request, [
             'name' => 'required',
              'price'=> 'required',
              'location' => 'required',
              'contacts' => 'required',
              'quantity' => 'required',
-             'picture' => 'required',
-             'extra_info' => 'required',
-             'date_from' => 'required',
-             'date_to' => 'required',
-             'category_id' => 'required',
+             'image' => 'required',
+             'extra' => 'required',
+             'from' => 'required',
+             'to' => 'required',
+             'category' => 'required',
         ]);
+
+        $path = $request->file('image')->store('public/products');
 
         $product = Product::create([
             'name' => $request->name,
@@ -71,7 +73,7 @@ class ProductController extends Controller
              'location' => $request->location,
              'contacts' => $request->contacts,
              'quantity' => $request->quantity,
-             'picture' => $request->picture,
+             'picture' => $path,
              'extra_info' => $request->extra,
              'date_from' => $request->from,
              'date_to' => $request->to,
@@ -119,12 +121,14 @@ class ProductController extends Controller
     {
         $product = Product::find($request->id);
 
+        $path = $request->file('image')->store('public/products');
+
         $product->name = $request->name;
         $product->price= $request->price;
         $product->location = $request->location;
         $product->contacts = $request->contacts;
         $product->quantity = $request->quantity;
-        $product->picture = $request->picture;
+        $product->picture = $path;
         $product->extra_info = $request->extra;
         $product->date_from = $request->from;
         $product->date_to = $request->to;

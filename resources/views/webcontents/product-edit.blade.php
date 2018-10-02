@@ -5,7 +5,7 @@
     <div class="panel panel-danger">
         <div class="panel-heading col-sm-12">Post Product</div>
         <div class="panel-body">
-            <form action="{{route('productUpdate',['id'=>$product->id])}}" method="post">
+            <form action="{{route('productUpdate',['id'=>$product->id])}}" method="post" enctype="multipart/form-data">
 
                 @csrf
                 <div class="form-group row">
@@ -93,10 +93,10 @@
                 <div class="form-group row">
                     <div class="col-sm-6">
                         <div class="col-sm-12">
-                            <label for="picture">Picture: </label>
+                            <label for="image">Picture: </label>
                         </div>
                         <div class="col-sm-12">
-                            <input type="file" value="{{$product->picture}}" name="picture" id="picture">
+                            <input type="file" value="{{$product->picture}}" name="image" id="image">
                         </div>
                     </div>
                     <div class="col-sm-2 form-group">

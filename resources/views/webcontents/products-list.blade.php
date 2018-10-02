@@ -16,7 +16,8 @@
                     <div class="snipcart-item block">
                             <a href="{{route('productShow',['id'=>$product->id])}}">
                         <div class="snipcart-thumb">
-                            <img src="{{asset('images/2.png')}}" alt=" " class="img-responsive">
+                            {{-- <img src="{{ asset('../storage/app/'.$product->picture)}}" alt=" " class="img-responsive"> --}}
+                        <img src="{{ asset('storage/'.$product->picture)}}" alt="{{$product->name}}" class="img-responsive">
                             <p>{{$product->name}} ({{$product->quantity}})</p>
                             <p>{{_('@')}}{{$product->price}} <span></span></p>
                         </div></a>
