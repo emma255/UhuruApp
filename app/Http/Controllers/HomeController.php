@@ -22,6 +22,16 @@ class HomeController extends Controller
     }
 
     /**
+     * Display admin home.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function admin()
+    {
+        return view('admin.index');
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
