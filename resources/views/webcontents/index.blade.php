@@ -25,7 +25,7 @@
 		<div class="pull-right">
 			<ul>
 				<li class="dropdown">
-					@if (Auth::check()) {
+					@if (Auth::check())
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('images/9.png')}}" alt="user" height="40px"></a>
 
 					<div class="mega-dropdown-menu">
@@ -45,7 +45,7 @@
 							</ul>
 						</div>
 					</div>
-					} @else{
+					@else
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('images/default_image.png')}}" alt="user" height="40px"></a>
 
 					<div class="mega-dropdown-menu">
@@ -55,7 +55,8 @@
 								<li><a href="{{route('register')}}">Sign Up</a></li>
 							</ul>
 						</div>
-					</div>} @endif
+					</div>
+					@endif
 				</li>
 			</ul>
 		</div>
@@ -98,7 +99,7 @@
 						</div>
 						<i>/</i>
 					</li>
-					<li><a href="{{('loan')}}">Request a loan</a><i>/</i></li>
+					<li><a href="{{ route('loanForm')}}">Request a loan</a><i>/</i></li>
 					<li><a href="{{('business')}}">Register business</a>
 						<i>/</i>
 					</li>
@@ -126,7 +127,7 @@
 	<!-- banner -->
 	<div class="banner">
 		<div class="row">
-			<div class="col-md-3">
+			<div class="col-md-2">
 				<nav class="navbar nav_bottom">
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<div class="navbar-header nav_2">
@@ -160,13 +161,13 @@
 				</nav>
 			</div>
 
-			<div class="col-md-6 row bg-info">
+			<div class="col-md-7 row bg-info">
 
 				@yield('contents') {{-- contents goes here --}}
 
 			</div>
 
-			<div class="col-md-3 pull-right">
+			<div class="col-md-3">
 				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 					<ul class="nav navbar-nav nav_1">
 						<li><a href="bread.html">Currency as of today</a></li>
