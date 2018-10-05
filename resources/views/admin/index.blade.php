@@ -58,7 +58,7 @@ desired effect
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+  <a href="{{route('admin')}}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
@@ -90,7 +90,7 @@ desired effect
                     <a href="#">
                       <div class="pull-left">
                         <!-- User Image -->
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                      <img src="{{asset('images/default_image.png')}}" alt="user image" height="40px">
                       </div>
                       <!-- Message title and timestamp -->
                       <h4>
@@ -175,15 +175,14 @@ desired effect
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="{{asset('images/default_image.png')}}" alt="user image" height="40px">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">Alexander Pierce</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
+                  <img src="{{asset('images/default_image.png')}}" alt="user image" height="40px">
                 <p>
                   Alexander Pierce - Web Developer
                   <small>Member since Nov. 2012</small>
@@ -245,8 +244,11 @@ desired effect
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
+      <li class="active"><a href="{{route('home')}}"><i class="fa fa-link"></i> <span>Back to APP</span></a></li><br>
       <li class="active"><a href="{{route('listCategories')}}"><i class="fa fa-link"></i> <span>Categories</span></a></li>
       <li class="active"><a href="{{route('fetchProductAdmin')}}"><i class="fa fa-link"></i> <span>Products</span></a></li>
+      <li class="active"><a href="{{route('listInstitutions')}}"><i class="fa fa-link"></i> <span>Loan institutions</span></a></li>
+      <li class="active"><a href="{{route('listTrainings')}}"><i class="fa fa-link"></i> <span>Trainings</span></a></li>
         {{-- <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li> --}}
         {{-- <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
@@ -270,8 +272,11 @@ desired effect
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
+        {{-- {{$head}} --}}
         Page Header 📎
-        <small>Optional description</small>
+      <small>
+        {{-- {{$subhead}} --}}
+        Optional description</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -387,7 +392,7 @@ desired effect
 <!-- jQuery 3 -->
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('js/adminlte.min.js')}}"></script>
 </body>
