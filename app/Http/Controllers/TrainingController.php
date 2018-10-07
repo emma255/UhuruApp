@@ -130,4 +130,24 @@ class TrainingController extends Controller
             echo 'Nothing selected to delete';
         }
     }
+    
+    /**
+     * Get the specified trainings from the list.
+     *
+     * @param  \App\Training  $training
+     * @return \Illuminate\Http\Response
+     */
+    public function getTrains(Request $request)
+    {
+        $trains = Training::where('category',request()->id)->get();
+
+        if(sizeof($trains) != 0){
+            // return view('trainings.trains', compact('trains'));
+            echo $trains;
+        }
+
+        else{
+            dd('no data eixsts');
+        }
+    }
 }
