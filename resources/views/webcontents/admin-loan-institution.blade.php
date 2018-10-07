@@ -2,9 +2,9 @@
 @section('contents')
 
 <div class="col-sm-12 margin-top">
-    <div class="panel panel-danger">
-        <div class="panel-heading col-sm-12">{{$institute->organization_name}}</div>
-        <div class="panel-body">
+    <div class="card card-danger">
+        <div class="card-header col-sm-12">{{$institute->organization_name}}</div>
+        <div class="card-body">
         	<div class="col-sm-12" align="center">
             	<h3>{{$institute->organization_name}}</h3><br>
         	</div>

@@ -1,4 +1,4 @@
-@extends('webcontents.index') 
+@extends('layouts.app') 
 @section('contents')
 
 @foreach ($products as $product)

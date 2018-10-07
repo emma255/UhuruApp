@@ -2,9 +2,9 @@
 @section('contents')
 
 <div class="col-sm-12 margin-top">
-    <div class="panel panel-danger">
-        <div class="panel-heading col-sm-12">Loan Institutions</div>
-        <div class="panel-body">
+    <div class="card card-danger">
+        <div class="card-header col-sm-12">Loan Institutions</div>
+        <div class="card-body">
             <div class="col-md-12">
             <a href="{{ route('addInstitution')}}"><button class="btn btn-success">Add Institution</button></a>
             </div>

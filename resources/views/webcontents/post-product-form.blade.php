@@ -1,10 +1,10 @@
-@extends('webcontents.index') 
+@extends('layouts.app') 
 @section('contents')
 
 <div class="col-sm-12 margin-top">
-    <div class="panel panel-danger">
-        {{-- <div class="panel-heading col-sm-12">Post Product</div> --}}
-        <div class="panel-body">
+    <div class="card card-danger">
+        <div class="card-header col-sm-12">Post Product</div>
+        <div class="card-body">
             <form action="{{route('productStore')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group row">

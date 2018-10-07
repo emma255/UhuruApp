@@ -366,7 +366,7 @@ desired effect
 
           <div class="form-group">
             <label class="control-sidebar-subheading">
-              Report panel usage
+              Report card usage
               <input type="checkbox" class="pull-right" checked>
             </label>
 

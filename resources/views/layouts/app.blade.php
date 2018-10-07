@@ -80,7 +80,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <div class="dropdown mega-dropdown-menu active">
+                        <div class="dropdown mega-dropdown-menu active">
                             <a href="#" class="navbar-brand" data-toggle="dropdown"><img src="{{asset('images/default_image.png')}}" alt="user" height="40px"></a>
                             <div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
                                 <div class="w3ls_vegetables">
@@ -93,17 +93,17 @@
                         </div>
                         @else
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('images/9.png')}}" alt="user" height="40px"></a>
-    
+
                         <div class="mega-dropdown-menu">
                             <div class="w3ls_vegetables">
                                 <ul class="dropdown-menu drp-mnu">
                                     <li>
-    
+
                                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }} as {{Auth::user()->name }}
                             </a>
-    
+
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
                                         </form>
@@ -117,8 +117,25 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
+        <main class="py-1 form-group">
+            <div class="row col-md-12 form-group">
+                <div class="col-md-2">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum in, nisi, delectus dignissimos tempora perspiciatis laboriosam
+                        cumque aliquid iure veritatis dicta incidunt vero?
+                    </p>
+                </div>
+                <div class="col-md-8">
+                    @yield('content')
+                    @yield('contents')
+                </div>
+                <div class="col-md-2">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum in, nisi, delectus dignissimos tempora perspiciatis laboriosam
+                        cumque aliquid iure veritatis dicta incidunt vero?
+                    </p>
+                </div>
+            </div>
         </main>
     </div>
 </body>

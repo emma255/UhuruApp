@@ -2,9 +2,9 @@
 @section('contents')
 
 <div class="col-sm-12 margin-top">
-    <div class="panel panel-danger">
-        <div class="panel-heading col-sm-12">{{$training->title}} <small class="pull-right">{{$training->category}}</small> </div>
-        <div class="panel-body">
+    <div class="card card-danger">
+        <div class="card-header col-sm-12">{{$training->title}} <small class="pull-right">{{$training->category}}</small> </div>
+        <div class="card-body">
             <div class="col-sm-12">
                 <p>
                     <section class="form-group">

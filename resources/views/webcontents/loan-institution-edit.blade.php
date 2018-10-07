@@ -2,9 +2,9 @@
 @section('contents')
 
 <div class="col-sm-12 margin-top">
-    <div class="panel panel-danger">
-        <div class="panel-heading col-sm-12">Add Loan Organization</div>
-        <div class="panel-body">
+    <div class="card card-danger">
+        <div class="card-header col-sm-12">Add Loan Organization</div>
+        <div class="card-body">
             <form action="{{route('updateInstitution', ['id'=>$institution->id])}}" method="post">
                 @csrf
                 <div class="row">

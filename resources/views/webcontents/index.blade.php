@@ -109,11 +109,11 @@
 						<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
 							<div class="w3ls_vegetables">
 								<ul>
-									<li><a href="{{('place_order')}}">Sales technique</a></li><br>
-									<li><a href="{{('retrieve_order')}}">Marketing of products</a></li>
-									<li><a href="{{('retrieve_order')}}">Finance management</a></li>
-									<li><a href="{{('retrieve_order')}}">How to invest and expand</a></li>
-									<li><a href="{{('retrieve_order')}}">Other resource sites</a></li>
+									<li><a href="{{ route('trains',['id'=>'sales'])}}">Sales technique</a></li><br>
+									<li><a href="{{ route('trains',['id'=>'marketing'])}}">Marketing of products</a></li>
+									<li><a href="{{ route('trains',['id'=>'finance'])}}">Finance management</a></li>
+									<li><a href="{{ route('trains',['id'=>'investments'])}}">How to invest and expand</a></li>
+									<li><a href="{{ route('trains',['id'=>'other resources'])}}">Other resource sites</a></li>
 								</ul>
 							</div>
 						</div>

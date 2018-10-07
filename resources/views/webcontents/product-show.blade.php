@@ -1,10 +1,10 @@
-@extends('webcontents.index') 
+@extends('layouts.app') 
 @section('contents')
 
 <div class="col-sm-12 margin-top">
-    <div class="panel panel-danger">
-        <div class="panel-heading col-sm-12">{{$product->name }} Stock Explanation</div>
-        <div class="panel-body">
+    <div class="card card-danger">
+        <div class="card-header col-sm-12">{{$product->name }} Stock Explanation</div>
+        <div class="card-body">
             <div class="col-md-4">
                 <img src="{{ asset('storage/'.$product->picture)}}" alt="{{$product->name}}" class="img-responsive">
             </div>

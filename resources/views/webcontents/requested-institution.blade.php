@@ -1,5 +1,5 @@
 
-@extends('webcontents.index')
+@extends('layouts.app')
 @section('contents')
 
 @if(sizeof($institutions) == 0)
