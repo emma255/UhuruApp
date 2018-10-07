@@ -96,3 +96,5 @@ Route::get('training/edit/{id}', 'TrainingController@edit')->name('editTraining'
 Route::get('training/delete/{id}', 'TrainingController@destroy')->name('deleteTraining')->middleware('auth');
 
 Route::post('training/update', 'TrainingController@update')->name('updateTraining')->middleware('auth');
+
+Route::get('trains/{id}', 'TrainingController@getTrains')->name('trains')->middleware('auth');
