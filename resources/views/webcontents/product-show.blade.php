@@ -6,7 +6,7 @@
         <div class="card-header col-sm-12">{{$product->name }} Stock Explanation</div>
         <div class="card-body">
             <div class="col-md-4">
-                <img src="{{ asset('storage/'.$product->picture)}}" alt="{{$product->name}}" class="img-responsive">
+                <img src="{{ asset('storage/'.$product->picture)}}" width="200px" height="200px" alt="{{$product->name}}" class="img-responsive">
             </div>
             <div class="col-md-7">
                 {{$product->name}} <br> Quantity Available: ({{$product->quantity}}) <br> {{_('Price per unit: ')}}{{$product->price}}
