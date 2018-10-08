@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -41,15 +42,15 @@
                             <div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
                                 <div class="w3ls_vegetables">
                                     <ul>
-                                        <li><a class="navbar-brand" href="{{('place_order')}}">place an order</a></li><br>
-                                        <li><a class="navbar-brand" href="{{('retrieve_order')}}">retrieve an order</a></li>
+                                        <li class="nav-item"><a class="navbar-brand" href="{{ route('createOrder')}}">place an order</a></li>
+                                        <li class="nav-item"><a class="navbar-brand" href="{{route('listOrders')}}">retrieve an order</a></li>
                                     </ul>
                                 </div>
                             </div>
 
                         </li>
-                        <li><a class="navbar-brand" href="{{('loan')}}">Request a loan</a></li>
-                        <li><a class="navbar-brand" href="{{('business')}}">Register business</a>
+                        <li class="nav-item"><a class="navbar-brand" href="{{ route('loanForm')}}">Request a loan</a></li>
+                        <li class="nav-item"><a class="navbar-brand" href="{{ route('businessRegister')}}">Register business</a>
 
                         </li>
 
@@ -58,11 +59,11 @@
                             <div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
                                 <div class="w3ls_vegetables">
                                     <ul>
-                                        <li><a class="navbar-brand" href="{{('place_order')}}">Sales technique</a></li>
-                                        <li><a class="navbar-brand" href="{{('retrieve_order')}}">Marketing of products</a></li>
-                                        <li><a class="navbar-brand" href="{{('retrieve_order')}}">Finance management</a></li>
-                                        <li><a class="navbar-brand" href="{{('retrieve_order')}}">How to invest and expand</a></li>
-                                        <li><a class="navbar-brand" href="{{('retrieve_order')}}">Other resource sites</a></li>
+                                        <li class="nav-item"><a class="navbar-brand" href="{{ route('trains',['id'=>'sales'])}}">Sales technique</a></li>
+                                        <li class="nav-item"><a class="navbar-brand" href="{{ route('trains',['id'=>'marketing'])}}">Marketing of products</a></li>
+                                        <li class="nav-item"><a class="navbar-brand" href="{{ route('trains',['id'=>'finance'])}}">Finance management</a></li>
+                                        <li class="nav-item"><a class="navbar-brand" href="{{ route('trains',['id'=>'investments'])}}">How to invest and expand</a></li>
+                                        <li class="nav-item"><a class="navbar-brand" href="{{ route('trains',['id'=>'other resources'])}}">Other resource sites</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -120,14 +121,26 @@
         <main class="py-1 form-group">
             <div class="row col-md-12 form-group">
                 <div class="col-md-2">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum in, nisi, delectus dignissimos tempora perspiciatis laboriosam
-                        cumque aliquid iure veritatis dicta incidunt vero?
-                    </p>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <ul class="navbar-nav">
+                        @foreach($categories = App\Category::all() as $category)
+                        <li class="nav-item"><a class="navbar-brand" href="{{route('fetchProduct', ['id' => $category->id])}}">{{$category->categoryname}}</a></li>
+                        @endforeach {{--
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Frozen Foods<span class="caret"></span></a>
+                            <div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
+                                <div class="w3ls_vegetables">
+                                    <ul>
+                                        <li><a href="frozen.html">Frozen Snacks</a></li>
+                                        <li><a href="frozen.html">Frozen Nonveg</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li> --}}
+                    </ul>
                 </div>
                 <div class="col-md-8">
-                    @yield('content')
-                    @yield('contents')
+                    @yield('content') @yield('contents')
                 </div>
                 <div class="col-md-2">
                     <p>
