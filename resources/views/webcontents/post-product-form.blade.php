@@ -24,10 +24,10 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="col-sm-12 input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01">Category</label>
+                                <label>Category</label>
                             </div>
                             <div class="col-sm-12">
-                                <select id="category" name="category" style="height: 50%" class="custom-select col-sm-10 form-control{{ $errors->has('category') ? ' is-invalid' : '' }}" name="category" value="{{ old('category') }}" required autofocus>
+                                <select id="category" name="category" class="custom-select col-sm-10 form-control{{ $errors->has('category') ? ' is-invalid' : '' }}" name="category" value="{{ old('category') }}" required autofocus>
 
                                         @if ($errors->has('category'))
                                             <span class="invalid-feedback" role="alert">
