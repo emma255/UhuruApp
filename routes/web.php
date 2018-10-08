@@ -98,3 +98,13 @@ Route::get('training/delete/{id}', 'TrainingController@destroy')->name('deleteTr
 Route::post('training/update', 'TrainingController@update')->name('updateTraining')->middleware('auth');
 
 Route::get('trains/{id}', 'TrainingController@getTrains')->name('trains')->middleware('auth');
+
+Route::get('train/{id}', 'TrainingController@getTrain')->name('train')->middleware('auth');
+
+//business
+Route::get('register/processes', 'BusinessController@index')->name('businessRegister')->middleware('auth');
+
+//orders
+Route::get('order/create', 'OrderController@create')->name('createOrder')->middleware('auth');
+
+Route::get('orders/list', 'OrderController@index')->name('listOrders')->middleware('auth');
