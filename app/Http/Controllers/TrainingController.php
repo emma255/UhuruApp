@@ -132,7 +132,7 @@ class TrainingController extends Controller
     }
     
     /**
-     * Get the specified trainings from the list.
+     * Get the specified category of trainings from the list.
      *
      * @param  \App\Training  $training
      * @return \Illuminate\Http\Response
@@ -142,11 +142,29 @@ class TrainingController extends Controller
         $trains = Training::where('category',request()->id)->get();
 
         if(sizeof($trains) != 0){
-            // return view('trainings.trains', compact('trains'));
-            echo $trains;
+            return view('trainings.trains-category', compact('trains'));
+            // echo $trains;
         }
 
-        else{
+        else{   
+            dd('no data eixsts');
+        }
+    }
+    /**
+     * Get the specified train from the list.
+     *
+     * @param  \App\Training  $training
+     * @return \Illuminate\Http\Response
+     */
+    public function getTrain(Request $request)
+    {
+        $train = Training::find(request()->id);
+
+        if($train){
+            return view('trainings.train', compact('train'));
+        }
+
+        else{   
             dd('no data eixsts');
         }
     }
