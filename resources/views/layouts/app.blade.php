@@ -11,7 +11,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -19,6 +20,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- font-awesome icons -->
+    <link href="{{asset('css/font-awesome.css')}}" rel="stylesheet" type="text/css" media="all" />
 
 </head>
 
@@ -68,6 +72,17 @@
                                 </div>
                             </div>
                         </li>
+                        <li>
+                            <form action="" method="get" class="sidebar-form">
+                                <div class="input-group">
+                                    <input type="text" name="search" id="search" class="form-control" placeholder="Search..." required>
+                                    <span class="input-group-btn">
+                                      <button type="submit" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                                      </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </li>
                     </ul>
 
                 </div>
@@ -80,39 +95,28 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @guest
                         <div class="dropdown mega-dropdown-menu active">
                             <a href="#" class="navbar-brand" data-toggle="dropdown"><img src="{{asset('images/default_image.png')}}" alt="user" height="40px"></a>
                             <div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
                                 <div class="w3ls_vegetables">
-                                    <ul>
+                                    <ul type="none"> @guest
+
                                         <li><a href="{{route('login')}}">Login</a></li>
-                                        <li><a href="{{route('register')}}">Sign Up</a></li>
+                                        <li><a href="{{route('register')}}">Sign Up</a></li> 
+                                        @else
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                        @endguest
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        @else
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('images/9.png')}}" alt="user" height="40px"></a>
-
-                        <div class="mega-dropdown-menu">
-                            <div class="w3ls_vegetables">
-                                <ul class="dropdown-menu drp-mnu">
-                                    <li>
-
-                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }} as {{Auth::user()->name }}
-                            </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            @csrf
-                                        </form>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        @endguest
                     </ul>
                 </div>
             </div>
@@ -139,7 +143,7 @@
                         </li> --}}
                     </ul>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8 row" id="content">
                     @yield('content') @yield('contents')
                 </div>
                 <div class="col-md-2">
@@ -151,6 +155,46 @@
             </div>
         </main>
     </div>
+    <script>
+        $(document).ready(function(){
+            $('#search').keyup(function(){
+
+                var search = $('#search').val();
+
+                var data = {
+                    search: search
+                }
+
+                $.ajax({
+                    url: '/search',
+                    type: 'GET',
+                    data: data,
+                        success: function (result) {
+                            $("#content").html(result);
+                        }
+                })
+            })
+
+            $('#search-btn').keyup(function(){
+
+                var search = $('#search').val();
+
+                var data = {
+                    search: search
+                }
+
+                $.ajax({
+                    url: '/search',
+                    type: 'GET',
+                    data: data,
+                        success: function (result) {
+                            $("#content").html(result);
+                        }
+                })
+            })
+        })
+    </script>
+
 </body>
 
 </html>
