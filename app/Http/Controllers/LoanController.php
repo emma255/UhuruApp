@@ -155,7 +155,7 @@ class LoanController extends Controller
     {
 
         $institutions = Loan::where([
-            ['collateral',$request->collateral],
+            ['collateral','like','%'.$request->collateral.'%'],
             ['credit_value','<=', $request->credit_value],
             ['minimum_amount','>=', $request->amount],
             ['scale',$request->scale]
