@@ -152,4 +152,30 @@ class ProductController extends Controller
 
         return redirect()->route('fetchProductAdmin');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        $search = $_GET['search'];
+
+        if($search != null){
+            
+            $products = Product::where('name','like','%'.$search.'%')->get();
+            
+            foreach ($products as $product) {
+
+                echo '
+                <div class="col-md-2">
+                <a href="/product/show?id='.$product->id.'">'.$product->name.'</a>
+                </div>
+                ';
+            }         
+        }
+
+    }
 }
