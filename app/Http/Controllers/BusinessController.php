@@ -14,7 +14,19 @@ class BusinessController extends Controller
      */
     public function index()
     {
-        return view('business.register-process');
+        $header = 'Business';
+        $subheader = 'Business registration processes';
+        $message = true;
+        
+        $processes = Business::first();
+
+        if($processes != null){
+            return view('business.register-process', compact('processes','header', 'subheader'));
+        }
+
+        else{
+            return view('business.register-process', compact('message','header', 'subheader'));
+        }
     }
 
     /**
@@ -24,7 +36,11 @@ class BusinessController extends Controller
      */
     public function create()
     {
-        //
+        $header = 'Business';
+        $subheader = 'Add Business registration processes';
+        $message = true;
+
+        return view('business.add', compact('header', 'subheader'));
     }
 
     /**
@@ -35,7 +51,17 @@ class BusinessController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'processes' => 'required',
+        ]);
+
+        $processes = new Business;
+
+        $processes->steps = $request->processes;
+
+        $processes->save();
+
+        return redirect()->route('business');
     }
 
     /**
@@ -46,7 +72,19 @@ class BusinessController extends Controller
      */
     public function show(Business $business)
     {
-        //
+        $header = 'Business';
+        $subheader = 'Business registration processes';
+        $message = true;
+        
+        $processes = Business::first();
+
+        if($processes != null){
+            return view('business.business', compact('processes','header', 'subheader'));
+        }
+
+        else{
+            return view('business.business', compact('message','header', 'subheader'));
+        }
     }
 
     /**
@@ -57,7 +95,13 @@ class BusinessController extends Controller
      */
     public function edit(Business $business)
     {
-        //
+
+        $header = 'Business';
+        $subheader = 'Edit Business registration processes';
+
+        $business = Business::first();
+
+        return view('business.edit', compact('business','header', 'subheader'));
     }
 
     /**
@@ -69,7 +113,17 @@ class BusinessController extends Controller
      */
     public function update(Request $request, Business $business)
     {
-        //
+        $this->validate($request, [
+            'processes' => 'required',
+        ]);
+        
+        $processes = Business::first();
+
+        $processes->steps = $request->processes;
+
+        $processes->save();
+ 
+        return redirect()->route('business');
     }
 
     /**
@@ -80,6 +134,15 @@ class BusinessController extends Controller
      */
     public function destroy(Business $business)
     {
-        //
+        $business = Business::find(request()->id);
+        if ($business) {
+
+            $business->delete();
+
+            return redirect()->route('business');
+        } else {
+            return redirect()->back();
+        }
+        
     }
 }
