@@ -104,7 +104,24 @@ Route::get('train/{id}', 'TrainingController@getTrain')->name('train')->middlewa
 //business
 Route::get('register/processes', 'BusinessController@index')->name('businessRegister')->middleware('auth');
 
+Route::get('business', 'BusinessController@show')->name('business')->middleware('auth');
+
+Route::get('processes/create', 'BusinessController@create')->name('addProcesses')->middleware('auth');
+
+Route::get('processes/create', 'BusinessController@create')->name('addProcesses')->middleware('auth');
+
+Route::get('processes/edit', 'BusinessController@edit')->name('editProcesses')->middleware('auth');
+
+Route::get('processes/delete', 'BusinessController@destroy')->name('deleteProcesses')->middleware('auth');
+
+Route::post('processes/update', 'BusinessController@update')->name('updateProcesses')->middleware('auth');
+
+Route::post('processes/store', 'BusinessController@store')->name('saveProcesses')->middleware('auth');
+
 //orders
 Route::get('order/create', 'OrderController@create')->name('createOrder')->middleware('auth');
 
 Route::get('orders/list', 'OrderController@index')->name('listOrders')->middleware('auth');
+    
+//searching
+Route::get('search', 'ProductController@search')->name('search')->middleware('auth');
