@@ -8,7 +8,7 @@
                 <div class="card-header col-sm-12">Business registration processes.</div>
                 <div class="card-body">
                     <p>
-                        Coming soon!!!!!!!!!
+                        {{isset($message)?'No business registration processes added' : $processes->steps}}
                     </p>
                 </div>
             </div>
