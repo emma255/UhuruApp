@@ -2,9 +2,9 @@
 @section('contents')
 
 <div class="col-sm-12 margin-top">
-    <div class="card card-danger">
-        <div class="card-header col-sm-12">Add Product Category</div>
-        <div class="card-body">
+    <div class="panel panel-danger">
+        <div class="panel-heading col-sm-12">Add Product Category</div>
+        <div class="panel-body">
             <form action="{{route('storeCategory')}}" method="post">
 
                 @csrf

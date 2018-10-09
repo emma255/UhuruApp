@@ -2,12 +2,12 @@
 @section('contents')
 
 <div class="col-sm-12 margin-top">
-    <div class="card card-danger">
-        <div class="card-header col-sm-12">Product Categories</div>
-        <div class="card-body">
-        <a href="{{route('addCategory')}}"><button class="btn btn-primary">Add Category</button></a>
-            <table class="table table-bordered table-striped table-hover table-responsive">
-                <thead>
+    <div class="panel panel-danger">
+        <div class="panel-heading form-group col-sm-12">Product Categories</div>
+        <div class="panel-body form-group">
+        <a href="{{route('addCategory')}}"><button class="btn form-group btn-primary">Add Category</button></a>
+            <table class="table table-bordered form-group table-striped table-hover table-responsive">
+                <thead class="form-group">
                     <tr>
                         <th>Category ID</th>
                         <th>Category Name</th>

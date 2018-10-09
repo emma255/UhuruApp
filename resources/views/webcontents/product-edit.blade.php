@@ -2,9 +2,9 @@
 @section('contents')
 
 <div class="col-sm-12 margin-top">
-    <div class="card card-danger">
-        <div class="card-header col-sm-12">Post Product</div>
-        <div class="card-body">
+    <div class="panel panel-danger">
+        <div class="panel-heading col-sm-12">Post Product</div>
+        <div class="panel-body">
             <form action="{{route('productUpdate',['id'=>$product->id])}}" method="post" enctype="multipart/form-data">
 
                 @csrf
@@ -60,7 +60,7 @@
                             <input type="text" name="location"  value="{{$product->location}}" id="location" class="form-control">
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div classheader="col-sm-6">
                         <div class="col-sm-12">
                             <label for="contacts">Contacts: </label>
                         </div>
